@@ -31,13 +31,11 @@ export function RikbaNavbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "var(--brand)" }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2Z" fill="white" opacity="0.3"/>
-                <circle cx="12" cy="12" r="4" fill="white"/>
-                <path d="M12 8v2M12 14v2M8 12h2M14 12h2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </div>
+           <img 
+            src="https://imgur.com/a/0TuvIQi.png" 
+            alt="Rikba" 
+            className="w-10 h-10 rounded-lg flex-shrink-0 object-contain"
+            />
             <span
               className="text-xl font-bold tracking-tight"
               style={{
