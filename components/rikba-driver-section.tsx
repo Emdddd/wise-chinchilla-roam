@@ -1,9 +1,7 @@
 import { useRef, useEffect, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export function RikbaDriverSection() {
-  const formRef = useRef();
-  const [result, setResult] = useState("");
-
   const perks = [
     {
       label: "Higher Earnings Per Trip",
@@ -57,30 +55,21 @@ export function RikbaDriverSection() {
     });
   }, []);
 
-  // Form submit handler
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending...");
-    const formData = new FormData(event.target);
-    formData.append("access_key", "d0315504-431b-43b7-af8e-64e99d28378e");
+  // Formspree handler
+  const [state, handleSubmit] = useForm("xwvnyjbr"); // حط الـ Form ID هنا
+  const [toast, setToast] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setResult("Form Submitted Successfully ✅");
-        event.target.reset();
-      } else {
-        setResult("Error submitting form ❌");
-      }
-    } catch (err) {
-      setResult("Network error ❌");
-      console.error(err);
+  const onSubmit = async (event) => {
+    const result = await handleSubmit(event);
+    if (state.succeeded || result?.ok) {
+      setToast("Form Submitted Successfully ✅");
+      setShowToast(true);
+    } else {
+      setToast("Error submitting form ❌");
+      setShowToast(true);
     }
+    setTimeout(() => setShowToast(false), 3000);
   };
 
   return (
@@ -128,18 +117,8 @@ export function RikbaDriverSection() {
 
               <div className="space-y-4">
                 {[
-                  {
-                    name: "Other platforms",
-                    pct: 35,
-                    label: "They keep ~20%+",
-                    bad: true,
-                  },
-                  {
-                    name: "Rikba",
-                    pct: 13,
-                    label: "We keep far less",
-                    bad: false,
-                  },
+                  { name: "Other platforms", pct: 35, label: "They keep ~20%+", bad: true },
+                  { name: "Rikba", pct: 13, label: "We keep far less", bad: false },
                 ].map((row, index) => (
                   <div
                     key={row.name}
@@ -158,7 +137,6 @@ export function RikbaDriverSection() {
                       >
                         {row.name}
                       </span>
-
                       <span
                         className="text-xs font-bold"
                         style={{ color: row.bad ? "#ef4444" : "#0066ff" }}
@@ -166,7 +144,6 @@ export function RikbaDriverSection() {
                         {row.label}
                       </span>
                     </div>
-
                     <div
                       className="progress-track h-2.5 rounded-full overflow-hidden"
                       style={{ background: "var(--border)" }}
@@ -237,10 +214,7 @@ export function RikbaDriverSection() {
                 >
                   <span className="text-2xl mt-0.5 shrink-0">{p.icon}</span>
                   <div>
-                    <p
-                      className="text-sm font-bold text-white mb-1"
-                      style={{ fontFamily: "Syne, sans-serif" }}
-                    >
+                    <p className="text-sm font-bold text-white mb-1" style={{ fontFamily: "Syne, sans-serif" }}>
                       {p.label}
                     </p>
                     <p
@@ -259,14 +233,11 @@ export function RikbaDriverSection() {
 
             {/* Apply Form */}
             <div className="flex flex-col w-full max-w-md">
-              <h3
-                className="text-2xl font-bold mb-6 text-white text-center"
-                style={{ fontFamily: "Syne, sans-serif" }}
-              >
+              <h3 className="text-2xl font-bold mb-6 text-white text-center" style={{ fontFamily: "Syne, sans-serif" }}>
                 Apply Now
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={onSubmit} className="space-y-4">
                 <input
                   type="text"
                   name="full_name"
@@ -304,15 +275,15 @@ export function RikbaDriverSection() {
                 >
                   Apply to Drive
                 </button>
-
-                <span className="text-white mt-2">{result}</span>
               </form>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CSS */}
+      {/* Toast */}
+      {showToast && <div className="toast">{toast}</div>}
+
       <style jsx>{`
         .progress-fill {
           width: 100%;
@@ -332,6 +303,27 @@ export function RikbaDriverSection() {
 
         .progress-bars.animate .progress-fill {
           transform: scaleX(var(--progress));
+        }
+
+        .toast {
+          position: fixed;
+          left: 50%;
+          bottom: 50px;
+          transform: translateX(-50%);
+          background: rgba(0, 102, 255, 0.9);
+          color: white;
+          padding: 12px 24px;
+          border-radius: 12px;
+          font-weight: bold;
+          animation: rise 3s forwards;
+          z-index: 1000;
+        }
+
+        @keyframes rise {
+          0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+          10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+          90% { opacity: 1; transform: translateX(-50%) translateY(-20px); }
+          100% { opacity: 0; transform: translateX(-50%) translateY(-40px); }
         }
       `}</style>
     </section>
