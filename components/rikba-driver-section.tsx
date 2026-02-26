@@ -5,7 +5,6 @@ export function RikbaDriverSection() {
     { label: "Weekly Payouts", desc: "Every Monday — guaranteed.", icon: "💰" },
     { label: "Performance Bonuses", desc: "Top-rated drivers unlock exclusive bonus zones, priority dispatch, and monthly rewards.", icon: "🏆" },
     { label: "In-App Driver Support", desc: "A dedicated driver support team available around the clock — because your time is money.", icon: "🎧" },
-    { label: "Local Fuel & Maintenance Perks", desc: "Access partner discounts at fuel stations and garages across Malta to keep your running costs low.", icon: "🔧" },
   ];
 
   return (
