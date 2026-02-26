@@ -129,7 +129,7 @@ export function RikbaDriverSection() {
 
             <a
               href="#apply-driver"
-              className="inline-flex items-center gap-2 mt-8 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="mx-auto block w-fit mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               style={{
                 fontFamily: "DM Sans, sans-serif",
                 background: "var(--brand)",
