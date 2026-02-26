@@ -3,7 +3,7 @@ export function RikbaPainPoints() {
     {
       emoji: "💸",
       headline: "Surge pricing hits hardest on Malta's busiest nights.",
-      body: "Paceville on a weekend? Fireworks season? Msida ferry rush? Prices spike exactly when you need a ride most.",
+      body: "Paceville on a weekend? Fireworks season? Prices spike exactly when you need a ride most.",
     },
     {
       emoji: "⏳",
