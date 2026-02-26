@@ -101,13 +101,12 @@ export function RikbaFinalCta() {
               Be the first to ride when we launch in your city.
             </p>
             <KleapForm
-              formId="rider-waitlist-bottom"
-              title="Rider Waitlist (Bottom)"
+              formId="rider-waitlist"
+              title="Rider Waitlist"
               description=""
               fields={[
                 { name: "name", label: "Full Name", type: "text", required: true },
                 { name: "email", label: "Email Address", type: "email", required: true },
-                { name: "city", label: "Your City", type: "text", required: true },
                 { name: "phone", label: "Phone (optional)", type: "tel", required: false },
               ]}
               submitText="Join the Waitlist →"
@@ -159,7 +158,7 @@ export function RikbaFinalCta() {
                   label: "Vehicle Type",
                   type: "select",
                   required: true,
-                  options: ["Sedan", "SUV", "Minivan", "Accessible Vehicle", "Other"],
+                  options: ["Petrol", "Hybrid", "Electric", "Van"],
                 },
               ]}
               submitText="Apply to Drive →"
