@@ -7,29 +7,30 @@ export function RikbaHero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center"
-      style={{ background: "var(--brand-navy)" }}
+      style={{
+        background: `
+          radial-gradient(circle at center, 
+            rgba(0, 26, 64, 0.95) 0%, 
+            rgba(0, 102, 255, 0.7) 30%, 
+            rgba(135, 206, 255, 0.4) 60%, 
+            rgba(255, 255, 255, 0.1) 85%, 
+            var(--brand-navy) 100%
+          )
+        `
+      }}
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://lrggyvioreorxttbasgi.supabase.co/storage/v1/object/public/app-assets/9399/images/1772063930756-rikba-hero-bg')",
-        }}
-      />
-
-      {/* Gradient overlay */}
+      {/* Gradient overlay - optional */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(0,26,64,0.92) 0%, rgba(0,26,64,0.75) 50%, rgba(0,102,255,0.35) 100%)",
+            "linear-gradient(135deg, rgba(0,26,64,0.3) 0%, rgba(0,102,255,0.2) 100%)",
         }}
       />
 
       {/* Decorative glow orb */}
       <div
-        className="absolute top-1/3 right-8 md:right-24 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-20"
+        className="absolute top-1/3 right-8 md:right-24 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-30"
         style={{ background: "var(--brand)" }}
       />
 
@@ -69,7 +70,7 @@ export function RikbaHero() {
             className="text-lg md:text-xl leading-relaxed max-w-lg mx-auto"
             style={{
               fontFamily: "DM Sans, sans-serif",
-              color: "rgba(255,255,255,0.75)",
+              color: "rgba(255,255,255,0.85)",
             }}
           >
             No surge pricing surprises. No race-to-the-bottom for Malta's drivers.
@@ -141,7 +142,7 @@ export function RikbaHero() {
                   className="text-sm font-medium"
                   style={{
                     fontFamily: "DM Sans, sans-serif",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(255,255,255,0.8)",
                   }}
                 >
                   {item.text}
@@ -150,7 +151,7 @@ export function RikbaHero() {
             ))}
           </div>
 
-          {/* Kleap Form placeholder (optional, if you want to add it later) */}
+          {/* Kleap Form placeholder */}
           {/* <div className="mt-10 max-w-md mx-auto">
             <KleapForm />
           </div> */}
