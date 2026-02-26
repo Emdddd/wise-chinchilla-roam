@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useForm } from "@formspree/react";
 
 export function RikbaDriverSection() {
   const perks = [
@@ -56,7 +56,7 @@ export function RikbaDriverSection() {
   }, []);
 
   // Formspree handler
-  const [state, handleSubmit] = useForm("xwvnyjbr"); // حط الـ Form ID هنا
+  const [state, handleSubmit] = useForm("xwvnyjbr"); // Form ID
   const [toast, setToast] = useState("");
   const [showToast, setShowToast] = useState(false);
 
@@ -97,7 +97,6 @@ export function RikbaDriverSection() {
               />
             </div>
 
-            {/* Floating comparison card */}
             <div
               className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 rounded-2xl p-5 shadow-xl progress-bars-container"
               style={{
@@ -114,7 +113,6 @@ export function RikbaDriverSection() {
               >
                 Platform Fee Comparison (per trip)
               </p>
-
               <div className="space-y-4">
                 {[
                   { name: "Other platforms", pct: 35, label: "They keep ~20%+", bad: true },
@@ -153,7 +151,6 @@ export function RikbaDriverSection() {
                   </div>
                 ))}
               </div>
-
               <p
                 className="text-xs mt-3 italic"
                 style={{
@@ -166,7 +163,7 @@ export function RikbaDriverSection() {
             </div>
           </div>
 
-          {/* Right — perks */}
+          {/* Right — perks + form */}
           <div className="flex flex-col items-center">
             <div className="text-center mb-8">
               <span
@@ -179,7 +176,6 @@ export function RikbaDriverSection() {
               >
                 For Drivers
               </span>
-
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-white"
                 style={{ fontFamily: "Syne, sans-serif" }}
@@ -236,45 +232,12 @@ export function RikbaDriverSection() {
               <h3 className="text-2xl font-bold mb-6 text-white text-center" style={{ fontFamily: "Syne, sans-serif" }}>
                 Apply Now
               </h3>
-
               <form onSubmit={onSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="full_name"
-                  placeholder="Full Name *"
-                  required
-                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email *"
-                  required
-                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-                />
-
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number *"
-                  required
-                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-                />
-
-                <textarea
-                  name="message"
-                  placeholder="Any additional notes..."
-                  rows={3}
-                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none"
-                />
-
-                <button
-                  type="submit"
-                  className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors"
-                >
-                  Apply to Drive
-                </button>
+                <input type="text" name="full_name" placeholder="Full Name *" required className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none" />
+                <input type="email" name="email" placeholder="Email *" required className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none" />
+                <input type="tel" name="phone" placeholder="Phone Number *" required className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none" />
+                <textarea name="message" placeholder="Any additional notes..." rows={3} className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none" />
+                <button type="submit" className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors">Apply to Drive</button>
               </form>
             </div>
           </div>
@@ -292,25 +255,16 @@ export function RikbaDriverSection() {
           transform: scaleX(0);
           transition: transform 1.5s ease-out;
         }
-
-        .progress-bars.other-fill .progress-fill {
-          background: #ef4444;
-        }
-
-        .progress-bars.rikba-fill .progress-fill {
-          background: #0066ff;
-        }
-
-        .progress-bars.animate .progress-fill {
-          transform: scaleX(var(--progress));
-        }
+        .progress-bars.other-fill .progress-fill { background: #ef4444; }
+        .progress-bars.rikba-fill .progress-fill { background: #0066ff; }
+        .progress-bars.animate .progress-fill { transform: scaleX(var(--progress)); }
 
         .toast {
           position: fixed;
           left: 50%;
           bottom: 50px;
           transform: translateX(-50%);
-          background: rgba(0, 102, 255, 0.9);
+          background: rgba(0,102,255,0.9);
           color: white;
           padding: 12px 24px;
           border-radius: 12px;
@@ -318,7 +272,6 @@ export function RikbaDriverSection() {
           animation: rise 3s forwards;
           z-index: 1000;
         }
-
         @keyframes rise {
           0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
           10% { opacity: 1; transform: translateX(-50%) translateY(0); }
