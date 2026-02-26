@@ -1,43 +1,48 @@
 import { useState } from "react";
 
-function MockKleapForm({ title, fields, submitText, onSuccess }) {
+function MockKleapForm({ title, fields, submitText, formspreeId, onSuccess }) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
+    if (formspreeId) {
+      // Real Formspree submission
+      e.target.submit();
+      return;
+    }
+
+    // Fallback mock submission
     e.preventDefault();
     setSubmitting(true);
-
-    // Simulate backend call
     setTimeout(() => {
       setSubmitting(false);
       setSuccess(true);
       if (onSuccess) onSuccess();
-    }, 1000); // 1 second delay to simulate network
+    }, 1000);
   };
 
   if (success) {
     return (
-      <div className="p-6 bg-green-50 rounded-lg text-center text-green-800">
-        <h4 className="font-bold mb-2">{title} Submitted Successfully!</h4>
-        <p>You are now on the waitlist. We'll notify you soon.</p>
+      <div className="p-6 bg-blue-50 rounded-xl text-center border-2 border-blue-100">
+        <h4 className="font-bold mb-2 text-blue-800">{title} Submitted Successfully!</h4>
+        <p className="text-blue-700">You're on the list! We'll notify you soon.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" action={formspreeId ? `https://formspree.io/f/${formspreeId}` : undefined} method={formspreeId ? "POST" : undefined}>
       {fields.map((field) => (
         <div key={field.name} className="flex flex-col">
-          <label className="text-sm font-medium">{field.label}</label>
+          <label className="text-sm font-medium text-gray-700 mb-1">{field.label}</label>
           {field.type === "select" ? (
             <select
               name={field.name}
               required={field.required}
-              className="border p-2 rounded"
+              className="w-full p-3 border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all duration-200"
             >
-              <option value="">Select {field.label}</option>
-              {field.options.map((opt) => (
+              <option value="">{`Select ${field.label}`}</option>
+              {field.options?.map((opt) => (
                 <option key={opt} value={opt}>
                   {opt}
                 </option>
@@ -48,7 +53,8 @@ function MockKleapForm({ title, fields, submitText, onSuccess }) {
               type={field.type}
               name={field.name}
               required={field.required}
-              className="border p-2 rounded"
+              className="w-full p-3 border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all duration-200"
+              placeholder={field.label}
             />
           )}
         </div>
@@ -56,7 +62,7 @@ function MockKleapForm({ title, fields, submitText, onSuccess }) {
       <button
         type="submit"
         disabled={submitting}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {submitting ? "Submitting..." : submitText}
       </button>
@@ -72,22 +78,22 @@ export function RikbaFinalCta() {
       style={{ background: "var(--surface)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ...top CTA omitted for brevity... */}
-
-        {/* Two-column forms */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Rider Waitlist */}
           <div
             id="waitlist-bottom"
             className="scroll-mt-24 rounded-2xl p-7 md:p-9 shadow-lg"
             style={{ background: "white" }}
           >
-            <h3 className="text-xl font-bold mb-4">Rider Waitlist</h3>
+            <h3 className="text-xl font-bold mb-6 text-center" style={{ color: "var(--brand-navy)" }}>
+              Rider Waitlist
+            </h3>
             <MockKleapForm
               title="Rider Waitlist"
+              formspreeId="xwvnyjbr"
               fields={[
-                { name: "name", label: "Full Name", type: "text", required: true },
-                { name: "email", label: "Email Address", type: "email", required: true },
+                { name: "name", label: "Full Name *", type: "text", required: true },
+                { name: "email", label: "Email Address *", type: "email", required: true },
                 { name: "phone", label: "Phone (optional)", type: "tel", required: false },
               ]}
               submitText="Join the Waitlist →"
@@ -100,16 +106,19 @@ export function RikbaFinalCta() {
             className="scroll-mt-24 rounded-2xl p-7 md:p-9 shadow-lg"
             style={{ background: "white" }}
           >
-            <h3 className="text-xl font-bold mb-4">Drive with Rikba</h3>
+            <h3 className="text-xl font-bold mb-6 text-center" style={{ color: "var(--brand-navy)" }}>
+              Drive with Rikba
+            </h3>
             <MockKleapForm
               title="Driver Application"
+              formspreeId="xwvnyjbr"
               fields={[
-                { name: "name", label: "Full Name", type: "text", required: true },
-                { name: "email", label: "Email Address", type: "email", required: true },
-                { name: "phone", label: "Phone Number", type: "tel", required: true },
+                { name: "name", label: "Full Name *", type: "text", required: true },
+                { name: "email", label: "Email Address *", type: "email", required: true },
+                { name: "phone", label: "Phone Number *", type: "tel", required: true },
                 {
                   name: "vehicle_type",
-                  label: "Vehicle Type",
+                  label: "Vehicle Type *",
                   type: "select",
                   required: true,
                   options: ["Petrol", "Hybrid", "Electric", "Van"],
