@@ -70,6 +70,7 @@
 body {
   background-color: hsl(0 0% 100%);
   color: hsl(240 10% 3.9%);
+  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Custom utility classes compatible with Tailwind CDN */
@@ -446,4 +447,9 @@ html {
 .prose-xl {
   font-size: 1.375rem;
   line-height: 1.8;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
 }
