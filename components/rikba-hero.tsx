@@ -9,29 +9,26 @@ export function RikbaHero() {
       className="relative min-h-screen flex items-center"
       style={{
         background: `
-          radial-gradient(circle at center, 
-            rgba(0, 26, 64, 0.95) 0%, 
-            rgba(0, 102, 255, 0.7) 30%, 
-            rgba(135, 206, 255, 0.4) 60%, 
-            rgba(255, 255, 255, 0.1) 85%, 
-            var(--brand-navy) 100%
+          radial-gradient(circle at bottom center, 
+            rgba(255, 255, 255, 0.15) 0%, 
+            rgba(255, 255, 255, 0.05) 25%, 
+            transparent 50%, 
+            rgba(20, 20, 20, 0.95) 70%, 
+            #000000 100%
           )
         `
       }}
     >
-      {/* Gradient overlay - optional */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(0,26,64,0.3) 0%, rgba(0,102,255,0.2) 100%)",
-        }}
+      {/* Overlay for contrast */}
+      <div 
+        className="absolute inset-0" 
+        style={{ background: "rgba(0,0,0,0.2)" }}
       />
 
       {/* Decorative glow orb */}
       <div
         className="absolute top-1/3 right-8 md:right-24 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-30"
-        style={{ background: "var(--brand)" }}
+        style={{ background: "rgba(255,255,255,0.15)" }}
       />
 
       {/* Content */}
@@ -39,13 +36,13 @@ export function RikbaHero() {
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
           <div className="w-full flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
               <span
                 className="w-2 h-2 rounded-full animate-pulse"
-                style={{ background: "var(--accent)" }}
+                style={{ background: "#ffffff" }}
               />
               <span
-                className="text-xs font-semibold tracking-widest text-white/80 uppercase"
+                className="text-xs font-semibold tracking-widest text-white/90 uppercase"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 Launching Summer 2026
@@ -60,7 +57,7 @@ export function RikbaHero() {
           >
             Malta Rides.
             <br />
-            <span style={{ color: "var(--brand)" }}>Fair Price.</span>
+            <span style={{ color: "#ffffff" }}>Fair Price.</span>
             <br />
             Zero Hassle.
           </h1>
@@ -70,7 +67,7 @@ export function RikbaHero() {
             className="text-lg md:text-xl leading-relaxed max-w-lg mx-auto"
             style={{
               fontFamily: "DM Sans, sans-serif",
-              color: "rgba(255,255,255,0.85)",
+              color: "rgba(255,255,255,0.9)",
             }}
           >
             No surge pricing surprises. No race-to-the-bottom for Malta's drivers.
@@ -84,8 +81,9 @@ export function RikbaHero() {
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               style={{
                 fontFamily: "DM Sans, sans-serif",
-                background: "var(--brand)",
-                boxShadow: "0 8px 32px rgba(0,102,255,0.45)",
+                background: "#ffffff",
+                color: "#000000",
+                boxShadow: "0 8px 32px rgba(255,255,255,0.3)",
               }}
             >
               Join the Waitlist
@@ -107,7 +105,7 @@ export function RikbaHero() {
 
             <a
               href="#drivers"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base border-2 border-white text-white transition-all duration-300 hover:bg-white hover:text-blue-600"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base border-2 border-white text-white transition-all duration-300 hover:bg-white hover:text-black"
               style={{ fontFamily: "DM Sans, sans-serif" }}
             >
               <svg
@@ -142,7 +140,7 @@ export function RikbaHero() {
                   className="text-sm font-medium"
                   style={{
                     fontFamily: "DM Sans, sans-serif",
-                    color: "rgba(255,255,255,0.8)",
+                    color: "rgba(255,255,255,0.85)",
                   }}
                 >
                   {item.text}
@@ -150,20 +148,14 @@ export function RikbaHero() {
               </div>
             ))}
           </div>
-
-          {/* Kleap Form placeholder */}
-          {/* <div className="mt-10 max-w-md mx-auto">
-            <KleapForm />
-          </div> */}
         </div>
       </div>
 
       {/* Bottom fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent, var(--surface))",
+          background: "linear-gradient(to bottom, transparent, #000000)",
         }}
       />
     </section>
