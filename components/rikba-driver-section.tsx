@@ -78,20 +78,23 @@ export function RikbaDriverSection() {
 
           {/* Right — perks */}
           <div>
-            <span
-              className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
-              style={{ color: "var(--brand)", background: "rgba(0,102,255,0.15)", fontFamily: "DM Sans, sans-serif" }}
-            >
+           <div className="text-center mb-8">
+           <span
+            className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
+            style={{ color: "var(--brand)", background: "rgba(0,102,255,0.15)", fontFamily: "DM Sans, sans-serif" }}
+             >
               For Drivers
-            </span>
-            <h2
+           </span>
+           <h2
               className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-white"
               style={{ fontFamily: "Syne, sans-serif" }}
-            >
-              Drive Malta.
+             >
+              Drive in Malta.
               <br />
-              <span style={{ color: "var(--brand)" }}>Earn More.</span>
-            </h2>
+               <span style={{ color: "var(--brand)" }}>Earn More.</span>
+               </h2>
+              </div>
+
             <p
               className="text-base md:text-lg leading-relaxed mb-10"
               style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.7)" }}
