@@ -41,7 +41,7 @@ export function RikbaHero() {
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "var(--accent)" }} />
               <span className="text-xs font-semibold tracking-widest text-white/80 uppercase"
                 style={{ fontFamily: "DM Sans, sans-serif" }}>
-                Now Coming to Malta 🇲🇹
+                Launching Summer 2026
               </span>
             </div>
 
