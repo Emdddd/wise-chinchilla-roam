@@ -50,7 +50,7 @@ export function RikbaDriverSection() {
                       </span>
                       <span
                         className="text-xs font-bold"
-                        style={{ color: row.bad ? "#ef4444" : "var(--accent)" }}
+                        style={{ color: row.bad ? "#ef4444" : "#0066ff" }}
                       >
                         {row.label}
                       </span>
@@ -60,7 +60,7 @@ export function RikbaDriverSection() {
                         className="h-full rounded-full transition-all duration-700"
                         style={{
                           width: `${row.pct}%`,
-                          background: row.bad ? "#ef4444" : "var(--brand)",
+                          background: row.bad ? "#ef4444" : "#0066ff",
                         }}
                       />
                     </div>
