@@ -16,7 +16,7 @@ export function RikbaDriverSection() {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://lrggyvioreorxttbasgi.supabase.co/storage/v1/object/public/app-assets/9399/images/1772063926174-rikba-driver"
+                src="https://i.imgur.com/LxQJn0T_d.webp?maxwidth=760&fidelity=grand"
                 alt="Rikba driver in Malta"
                 className="w-full h-72 md:h-96 object-cover"
               />
