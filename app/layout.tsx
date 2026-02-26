@@ -3,7 +3,6 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/navbar";
-import { KleapScripts } from "@/components/kleap-scripts";
 import { DevToolsGuard } from "./devtools-guard";
 import { TailwindCDNClient } from "@/components/tailwind-cdn-client";
 import { siteConfig } from "@/lib/site-config";
@@ -163,7 +162,6 @@ export default function RootLayout({
       >
         <TailwindCDNClient />
         <DevToolsGuard />
-        <KleapScripts />
         <main className={siteConfig.showNavbar !== false ? "pt-24" : ""}>
           {siteConfig.showNavbar !== false && <NavBar />}
           {children}
