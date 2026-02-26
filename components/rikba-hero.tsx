@@ -38,7 +38,7 @@ export function RikbaHero() {
           {/* Left — headline + CTAs */}
           <div className="space-y-8">
             <div className="w-full flex justify-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm mx-auto">
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "var(--accent)" }}></span>
               <span className="text-xs font-semibold tracking-widest text-white/80 uppercase"
                 style={{ fontFamily: "DM Sans, sans-serif" }}>
