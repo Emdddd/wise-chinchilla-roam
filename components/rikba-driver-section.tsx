@@ -2,7 +2,7 @@ export function RikbaDriverSection() {
   const perks = [
     { label: "Higher Earnings Per Trip", desc: "We charge Malta drivers a lower platform fee so you take home a bigger share of every fare — every single day.", icon: "📈" },
     { label: "Flexible Scheduling", desc: "Drive when you want, for as long as you want. No minimum hours, no penalties for going offline.", icon: "🕐" },
-    { label: "Instant Payouts", desc: "Cash out your earnings the same day, every day — no waiting until next week.", icon: "⚡" },
+    { label: "Weekly Payouts", desc: "Every Monday — guaranteed.", icon: "💰" },
     { label: "Performance Bonuses", desc: "Top-rated drivers unlock exclusive bonus zones, priority dispatch, and monthly rewards.", icon: "🏆" },
     { label: "In-App Driver Support", desc: "A dedicated driver support team available around the clock — because your time is money.", icon: "🎧" },
     { label: "Local Fuel & Maintenance Perks", desc: "Access partner discounts at fuel stations and garages across Malta to keep your running costs low.", icon: "🔧" },
