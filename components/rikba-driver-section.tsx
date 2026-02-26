@@ -1,4 +1,8 @@
+import { useRef, useEffect } from "react";
+
 export function RikbaDriverSection() {
+  const formRef = useRef();
+
   const perks = [
     {
       label: "Higher Earnings Per Trip",
@@ -31,13 +35,32 @@ export function RikbaDriverSection() {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const width = entry.target.getAttribute("data-width");
+            entry.target.style.setProperty("--progress", width / 100);
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    document.querySelectorAll(".progress-bars").forEach((bar) => {
+      observer.observe(bar);
+    });
+  }, []);
+
   return (
     <section
       id="drivers"
       className="py-20 md:py-28 scroll-mt-20"
       style={{ background: "var(--brand-navy)" }}
     >
-      {/* Driver Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Left — image + comparison */}
@@ -247,30 +270,6 @@ export function RikbaDriverSection() {
         }
       `}</style>
 
-      {/* Scroll Animation Script */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.addEventListener('DOMContentLoaded', () => {
-              const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    const width = entry.target.getAttribute('data-width');
-                    entry.target.style.setProperty('--progress', width / 100);
-                    entry.target.classList.add('animate');
-                    observer.unobserve(entry.target);
-                  }
-                });
-              }, { threshold: 0.3 });
-
-              document.querySelectorAll('.progress-bars').forEach(bar => {
-                observer.observe(bar);
-              });
-            });
-          `,
-        }}
-      />
-
       {/* Driver Application Form */}
       <div
         id="apply-driver"
@@ -285,25 +284,15 @@ export function RikbaDriverSection() {
           </h3>
 
           <form
+            ref={formRef}
             action="https://api.web3forms.com/submit"
             method="POST"
             className="space-y-4"
           >
-            {/* Web3Forms settings */}
             <input
               type="hidden"
               name="access_key"
               value="d0315504-431b-43b7-af8e-64e99d28378e"
-            />
-            <input
-              type="hidden"
-              name="subject"
-              value="New Driver Application - Rikba Malta"
-            />
-            <input
-              type="hidden"
-              name="from_name"
-              value="Rikba Driver Portal"
             />
             <input
               type="hidden"
@@ -314,42 +303,37 @@ export function RikbaDriverSection() {
             <input
               type="text"
               name="full_name"
-              placeholder="Full name *"
+              placeholder="Full Name *"
               required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            />
-
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone number *"
-              required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
             />
 
             <input
               type="email"
               name="email"
-              placeholder="Email address *"
+              placeholder="Email *"
               required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number *"
+              required
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
             />
 
             <textarea
               name="message"
-              placeholder="Any additional notes or information..."
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand) resize-none"
-              rows="3"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+              placeholder="Any additional notes..."
+              rows={3}
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none"
             />
 
             <button
               type="submit"
               className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
             >
               Apply to Drive
             </button>
