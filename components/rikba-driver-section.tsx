@@ -1,10 +1,34 @@
 export function RikbaDriverSection() {
   const perks = [
-    { label: "Higher Earnings Per Trip", desc: "We charge Malta drivers a lower platform fee so you take home a bigger share of every fare — every single day.", icon: "📈" },
-    { label: "Flexible Scheduling", desc: "Drive when you want, for as long as you want. No minimum hours, no penalties for going offline.", icon: "🕐" },
-    { label: "Weekly Payouts", desc: "Every Monday — guaranteed.", icon: "💰" },
-    { label: "Performance Bonuses", desc: "Top-rated drivers unlock exclusive bonus zones, priority dispatch, and monthly rewards.", icon: "🏆" },
-    { label: "In-App Driver Support", desc: "A dedicated driver support team available around the clock — because your time is money.", icon: "🎧" },
+    {
+      label: "Higher Earnings Per Trip",
+      desc:
+        "We charge Malta drivers a lower platform fee so you take home a bigger share of every fare — every single day.",
+      icon: "📈",
+    },
+    {
+      label: "Flexible Scheduling",
+      desc:
+        "Drive when you want, for as long as you want. No minimum hours, no penalties for going offline.",
+      icon: "🕐",
+    },
+    {
+      label: "Weekly Payouts",
+      desc: "Every Monday — guaranteed.",
+      icon: "💰",
+    },
+    {
+      label: "Performance Bonuses",
+      desc:
+        "Top-rated drivers unlock exclusive bonus zones, priority dispatch, and monthly rewards.",
+      icon: "🏆",
+    },
+    {
+      label: "In-App Driver Support",
+      desc:
+        "A dedicated driver support team available around the clock — because your time is money.",
+      icon: "🎧",
+    },
   ];
 
   return (
@@ -13,9 +37,9 @@ export function RikbaDriverSection() {
       className="py-20 md:py-28 scroll-mt-20"
       style={{ background: "var(--brand-navy)" }}
     >
+      {/* Driver Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-
           {/* Left — image + comparison */}
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
@@ -53,12 +77,24 @@ export function RikbaDriverSection() {
 
               <div className="space-y-4">
                 {[
-                  { name: "Other platforms", pct: 35, label: "They keep ~20%+", bad: true },
-                  { name: "Rikba", pct: 13, label: "We keep far less", bad: false },
+                  {
+                    name: "Other platforms",
+                    pct: 35,
+                    label: "They keep ~20%+",
+                    bad: true,
+                  },
+                  {
+                    name: "Rikba",
+                    pct: 13,
+                    label: "We keep far less",
+                    bad: false,
+                  },
                 ].map((row, index) => (
                   <div
                     key={row.name}
-                    className={`progress-bars ${index === 1 ? "rikba-fill" : "other-fill"}`}
+                    className={`progress-bars ${
+                      index === 1 ? "rikba-fill" : "other-fill"
+                    }`}
                     data-width={row.pct}
                   >
                     <div className="flex justify-between items-center mb-1">
@@ -234,6 +270,92 @@ export function RikbaDriverSection() {
           `,
         }}
       />
+
+      {/* Driver Application Form */}
+      <div
+        id="apply-driver"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-12 border-t border-white/10"
+      >
+        <div className="max-w-md mx-auto">
+          <h3
+            className="text-2xl font-bold mb-6 text-white text-center"
+            style={{ fontFamily: "Syne, sans-serif" }}
+          >
+            Apply Now
+          </h3>
+
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            className="space-y-4"
+          >
+            {/* Web3Forms settings */}
+            <input
+              type="hidden"
+              name="access_key"
+              value="d0315504-431b-43b7-af8e-64e99d28378e"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New Driver Application - Rikba Malta"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="Rikba Driver Portal"
+            />
+            <input
+              type="hidden"
+              name="to"
+              value="Hmalta2026@gmail.com"
+            />
+
+            <input
+              type="text"
+              name="full_name"
+              placeholder="Full name *"
+              required
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone number *"
+              required
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address *"
+              required
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand)"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            />
+
+            <textarea
+              name="message"
+              placeholder="Any additional notes or information..."
+              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-var(--brand) resize-none"
+              rows="3"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            />
+
+            <button
+              type="submit"
+              className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            >
+              Apply to Drive
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 }
