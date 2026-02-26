@@ -8,7 +8,11 @@ export function RikbaDriverSection() {
   ];
 
   return (
-    <section id="drivers" className="py-20 md:py-28 scroll-mt-20" style={{ background: "var(--brand-navy)" }}>
+    <section
+      id="drivers"
+      className="py-20 md:py-28 scroll-mt-20"
+      style={{ background: "var(--brand-navy)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
@@ -22,31 +26,52 @@ export function RikbaDriverSection() {
               />
               <div
                 className="absolute inset-0 rounded-3xl"
-                style={{ background: "linear-gradient(to top, rgba(0,26,64,0.7) 0%, transparent 60%)" }}
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(0,26,64,0.7) 0%, transparent 60%)",
+                }}
               />
             </div>
 
-            {/* Floating comparison card - ANIMATED BARS */}
+            {/* Floating comparison card */}
             <div
               className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 rounded-2xl p-5 shadow-xl progress-bars-container"
-              style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)" }}
+              style={{
+                background: "rgba(255,255,255,0.97)",
+                backdropFilter: "blur(12px)",
+              }}
             >
               <p
                 className="text-xs font-bold uppercase tracking-widest mb-4"
-                style={{ fontFamily: "DM Sans, sans-serif", color: "var(--text-secondary)" }}
+                style={{
+                  fontFamily: "DM Sans, sans-serif",
+                  color: "var(--text-secondary)",
+                }}
               >
                 Platform Fee Comparison (per trip)
               </p>
-              <div className="space-y-3">
+
+              <div className="space-y-4">
                 {[
-                  { name: "Other platforms", pct: 85, label: "They keep ~15%+", bad: true },  // Rikba screenshot width
+                  { name: "Other platforms", pct: 85, label: "They keep ~15%+", bad: true },
                   { name: "Rikba", pct: 15, label: "We keep far less", bad: false },
                 ].map((row, index) => (
-                  <div key={row.name} className={`progress-bars ${index === 1 ? 'rikba-fill' : 'other-fill'}`} data-width={`${row.pct}%`}>
+                  <div
+                    key={row.name}
+                    className={`progress-bars ${index === 1 ? "rikba-fill" : "other-fill"}`}
+                    data-width={row.pct}
+                  >
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-semibold" style={{ fontFamily: "DM Sans, sans-serif", color: "var(--text-primary)" }}>
+                      <span
+                        className="text-xs font-semibold"
+                        style={{
+                          fontFamily: "DM Sans, sans-serif",
+                          color: "var(--text-primary)",
+                        }}
+                      >
                         {row.name}
                       </span>
+
                       <span
                         className="text-xs font-bold"
                         style={{ color: row.bad ? "#ef4444" : "#0066ff" }}
@@ -54,15 +79,23 @@ export function RikbaDriverSection() {
                         {row.label}
                       </span>
                     </div>
-                    <div className="progress-track h-2.5 rounded-full overflow-hidden" style={{ background: "var(--border)" }}>
+
+                    <div
+                      className="progress-track h-2.5 rounded-full overflow-hidden"
+                      style={{ background: "var(--border)" }}
+                    >
                       <div className="progress-fill h-full rounded-full"></div>
                     </div>
                   </div>
                 ))}
               </div>
+
               <p
                 className="text-xs mt-3 italic"
-                style={{ fontFamily: "DM Sans, sans-serif", color: "var(--text-secondary)" }}
+                style={{
+                  fontFamily: "DM Sans, sans-serif",
+                  color: "var(--text-secondary)",
+                }}
               >
                 * Exact rates set at launch. Comparative for illustration only.
               </p>
@@ -74,10 +107,15 @@ export function RikbaDriverSection() {
             <div className="text-center mb-8">
               <span
                 className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
-                style={{ color: "var(--brand)", background: "rgba(0,102,255,0.15)", fontFamily: "DM Sans, sans-serif" }}
+                style={{
+                  color: "var(--brand)",
+                  background: "rgba(0,102,255,0.15)",
+                  fontFamily: "DM Sans, sans-serif",
+                }}
               >
                 For Drivers
               </span>
+
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-white"
                 style={{ fontFamily: "Syne, sans-serif" }}
@@ -90,9 +128,14 @@ export function RikbaDriverSection() {
 
             <p
               className="text-base md:text-lg leading-relaxed mb-10 text-center max-w-lg"
-              style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.7)" }}
+              style={{
+                fontFamily: "DM Sans, sans-serif",
+                color: "rgba(255,255,255,0.7)",
+              }}
             >
-              Rikba was built with Malta's drivers at the table — not as an afterthought. Fairer fees, real support, and tools that help you earn more on your schedule across the island.
+              Rikba was built with Malta's drivers at the table — not as an
+              afterthought. Fairer fees, real support, and tools that help you
+              earn more on your schedule across the island.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8 w-full max-w-2xl">
@@ -100,7 +143,10 @@ export function RikbaDriverSection() {
                 <div
                   key={i}
                   className="rounded-xl p-4 flex gap-3 items-start transition-all duration-200 hover:scale-105"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
+                  style={{
+                    background: "rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }}
                 >
                   <span className="text-2xl mt-0.5 shrink-0">{p.icon}</span>
                   <div>
@@ -112,7 +158,10 @@ export function RikbaDriverSection() {
                     </p>
                     <p
                       className="text-xs leading-relaxed"
-                      style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.6)" }}
+                      style={{
+                        fontFamily: "DM Sans, sans-serif",
+                        color: "rgba(255,255,255,0.6)",
+                      }}
                     >
                       {p.desc}
                     </p>
@@ -121,7 +170,6 @@ export function RikbaDriverSection() {
               ))}
             </div>
 
-            {/* Centered Apply Button */}
             <div className="flex justify-center w-full">
               <a
                 href="#apply-driver"
@@ -134,72 +182,58 @@ export function RikbaDriverSection() {
                 }}
               >
                 Apply to Drive
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </a>
             </div>
           </div>
         </div>
       </div>
 
+      {/* CSS */}
       <style jsx>{`
-        .progress-bars {
-          position: relative;
-          margin-bottom: 0.5rem;
-        }
-        .progress-track {
-          position: relative;
-          height: 10px !important;
-          border-radius: 5px;
-          overflow: hidden;
-          background: var(--border) !important;
-        }
         .progress-fill {
-          position: absolute;
-          top: 0;
-          left: -100%;
+          width: 100%;
           height: 100%;
-          width: 0%;
-          background: linear-gradient(to right, #ef4444 0%, #0066ff 100%) !important;
-          border-radius: 5px;
-          transition: left 0.3s ease-out, width 1.5s ease-out 0.3s;
-          will-change: transform;
+          transform-origin: left;
+          transform: scaleX(0);
+          transition: transform 1.5s ease-out;
         }
-        .progress-bars[data-width="85%"] .progress-fill {
-          background: linear-gradient(to right, #ef4444 0%, #0066ff 100%) !important;
+
+        .progress-bars.other-fill .progress-fill {
+          background: #ef4444;
         }
-        .progress-bars[data-width="15%"] .progress-fill {
-          background: #0066ff !important;
+
+        .progress-bars.rikba-fill .progress-fill {
+          background: #0066ff;
         }
+
         .progress-bars.animate .progress-fill {
-          left: 0;
-          width: attr(data-width) !important;
-        }
-        @keyframes slideIn {
-          0% { left: -100%; width: 0%; }
-          30% { left: 0; width: 0%; }
-          100% { left: 0; width: attr(data-width); }
+          transform: scaleX(var(--progress));
         }
       `}</style>
 
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('animate');
-                  observer.unobserve(entry.target);
-                }
+      {/* Scroll Animation Script */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('DOMContentLoaded', () => {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.setProperty('--progress', width / 100);
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.3 });
+
+              document.querySelectorAll('.progress-bars').forEach(bar => {
+                observer.observe(bar);
               });
-            }, { threshold: 0.3 });
-            document.querySelectorAll('.progress-bars-container .progress-bars').forEach(bar => {
-              observer.observe(bar);
             });
-          });
-        `
-      }} />
+          `,
+        }}
+      />
     </section>
   );
 }
