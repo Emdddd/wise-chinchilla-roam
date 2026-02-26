@@ -1,7 +1,8 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export function RikbaDriverSection() {
   const formRef = useRef();
+  const [result, setResult] = useState("");
 
   const perks = [
     {
@@ -35,6 +36,7 @@ export function RikbaDriverSection() {
     },
   ];
 
+  // Scroll animation for progress bars
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -54,6 +56,32 @@ export function RikbaDriverSection() {
       observer.observe(bar);
     });
   }, []);
+
+  // Form submit handler
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "d0315504-431b-43b7-af8e-64e99d28378e");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setResult("Form Submitted Successfully ✅");
+        event.target.reset();
+      } else {
+        setResult("Error submitting form ❌");
+      }
+    } catch (err) {
+      setResult("Network error ❌");
+      console.error(err);
+    }
+  };
 
   return (
     <section
@@ -229,19 +257,56 @@ export function RikbaDriverSection() {
               ))}
             </div>
 
-            <div className="flex justify-center w-full">
-              <a
-                href="#apply-driver"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                style={{
-                  fontFamily: "DM Sans, sans-serif",
-                  background: "var(--brand)",
-                  color: "white",
-                  boxShadow: "0 8px 32px rgba(0,102,255,0.4)",
-                }}
+            {/* Apply Form */}
+            <div className="flex flex-col w-full max-w-md">
+              <h3
+                className="text-2xl font-bold mb-6 text-white text-center"
+                style={{ fontFamily: "Syne, sans-serif" }}
               >
-                Apply to Drive
-              </a>
+                Apply Now
+              </h3>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  name="full_name"
+                  placeholder="Full Name *"
+                  required
+                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email *"
+                  required
+                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
+                />
+
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number *"
+                  required
+                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
+                />
+
+                <textarea
+                  name="message"
+                  placeholder="Any additional notes..."
+                  rows={3}
+                  className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none"
+                />
+
+                <button
+                  type="submit"
+                  className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors"
+                >
+                  Apply to Drive
+                </button>
+
+                <span className="text-white mt-2">{result}</span>
+              </form>
             </div>
           </div>
         </div>
@@ -269,111 +334,6 @@ export function RikbaDriverSection() {
           transform: scaleX(var(--progress));
         }
       `}</style>
-
-      {/* Driver Application Form */}
-      <div
-        id="apply-driver"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-12 border-t border-white/10"
-      >
-        <div className="max-w-md mx-auto">
-          <h3
-            className="text-2xl font-bold mb-6 text-white text-center"
-            style={{ fontFamily: "Syne, sans-serif" }}
-          >
-            Apply Now
-          </h3>
-           import { useState } from 'react';
-
-export default function ContactForm() {
-  const [result, setResult] = useState("");
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
-    formData.append("access_key", "d0315504-431b-43b7-af8e-64e99d28378e");
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      setResult("Error");
-    }
-  };
-
-  return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="name" required/>
-      <input type="email" name="email" required/>
-      <textarea name="message" required></textarea>
-      <button type="submit">Submit Form</button>
-      <span>{result}</span>
-    </form>
-  );
-}
-          <form
-            ref={formRef}
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            className="space-y-4"
-          >
-            <input
-              type="hidden"
-              name="access_key"
-              value="d0315504-431b-43b7-af8e-64e99d28378e"
-            />
-            <input
-              type="hidden"
-              name="to"
-              value="Hmalta2026@gmail.com"
-            />
-
-            <input
-              type="text"
-              name="full_name"
-              placeholder="Full Name *"
-              required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email *"
-              required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-            />
-
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number *"
-              required
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none"
-            />
-
-            <textarea
-              name="message"
-              placeholder="Any additional notes..."
-              rows={3}
-              className="w-full p-4 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none"
-            />
-
-            <button
-              type="submit"
-              className="w-full p-4 rounded-xl bg-var(--brand) text-white font-bold hover:bg-blue-600 transition-colors"
-            >
-              Apply to Drive
-            </button>
-          </form>
-        </div>
-      </div>
     </section>
   );
 }
