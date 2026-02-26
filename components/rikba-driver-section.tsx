@@ -53,8 +53,8 @@ export function RikbaDriverSection() {
 
               <div className="space-y-4">
                 {[
-                  { name: "Other platforms", pct: 85, label: "They keep ~15%+", bad: true },
-                  { name: "Rikba", pct: 15, label: "We keep far less", bad: false },
+                  { name: "Other platforms", pct: 35, label: "They keep ~15%+", bad: true },
+                  { name: "Rikba", pct: 13, label: "We keep far less", bad: false },
                 ].map((row, index) => (
                   <div
                     key={row.name}
