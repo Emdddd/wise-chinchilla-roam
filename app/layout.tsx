@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { GeistSans } from "geist/font/sans";
+import { DM_Sans, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/navbar";
 import { DevToolsGuard } from "./devtools-guard";
 import { TailwindCDNClient } from "@/components/tailwind-cdn-client";
 import { siteConfig } from "@/lib/site-config";
 
+const bodyFont = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const headingFont = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+});
 export const metadata: Metadata = {
   title: {
     default: `${siteConfig.name} - ${siteConfig.tagline}`,
@@ -155,7 +166,8 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          GeistSans.className,
+          bodyFont.variable,
+          headingFont.variable,
           "bg-white antialiased h-full w-full",
         )}
         suppressHydrationWarning // Prevents browser extension conflicts
