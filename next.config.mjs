@@ -2,9 +2,10 @@ import nextMDX from "@next/mdx";
 import path from "path";
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = { 
+  output: 'export',
+images: { unoptimized: true },
   // Standalone output for optimized Docker builds (~150MB vs 1.7GB)
-  output: "standalone",
 
   // Turbopack configuration
   turbopack: {
