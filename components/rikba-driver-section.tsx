@@ -40,7 +40,7 @@ export function RikbaDriverSection() {
               </p>
               <div className="space-y-3">
                 {[
-                  { name: "Typical Platform", pct: 78, label: "They keep ~28%+", bad: true },
+                  { name: "Other platforms", pct: 78, label: "They keep 15%+", bad: true },
                   { name: "Rikba", pct: 40, label: "We keep far less", bad: false },
                 ].map((row) => (
                   <div key={row.name}>
@@ -60,7 +60,7 @@ export function RikbaDriverSection() {
                         className="h-full rounded-full transition-all duration-700"
                         style={{
                           width: `${row.pct}%`,
-                          background: row.bad ? "#ef4444" : "var(--accent)",
+                          background: row.bad ? "#ef4444" : "var(--brand)",
                         }}
                       />
                     </div>
