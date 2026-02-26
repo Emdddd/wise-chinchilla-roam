@@ -26,9 +26,9 @@ export function RikbaDriverSection() {
               />
             </div>
 
-            {/* Floating comparison card */}
+            {/* Floating comparison card - ANIMATED BARS */}
             <div
-              className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 rounded-2xl p-5 shadow-xl"
+              className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 rounded-2xl p-5 shadow-xl progress-bars-container"
               style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)" }}
             >
               <p
@@ -39,10 +39,10 @@ export function RikbaDriverSection() {
               </p>
               <div className="space-y-3">
                 {[
-                  { name: "Other platforms", pct: 40, label: "They keep 15%+", bad: true },
+                  { name: "Other platforms", pct: 85, label: "They keep ~15%+", bad: true },  // Rikba screenshot width
                   { name: "Rikba", pct: 15, label: "We keep far less", bad: false },
-                ].map((row) => (
-                  <div key={row.name}>
+                ].map((row, index) => (
+                  <div key={row.name} className={`progress-bars ${index === 1 ? 'rikba-fill' : 'other-fill'}`} data-width={`${row.pct}%`}>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-xs font-semibold" style={{ fontFamily: "DM Sans, sans-serif", color: "var(--text-primary)" }}>
                         {row.name}
@@ -54,14 +54,8 @@ export function RikbaDriverSection() {
                         {row.label}
                       </span>
                     </div>
-                    <div className="h-2.5 rounded-full overflow-hidden" style={{ background: "var(--border)" }}>
-                      <div
-                        className="h-full rounded-full transition-all duration-700"
-                        style={{
-                          width: `${row.pct}%`,
-                          background: row.bad ? "#ef4444" : "#0066ff",
-                        }}
-                      />
+                    <div className="progress-track h-2.5 rounded-full overflow-hidden" style={{ background: "var(--border)" }}>
+                      <div className="progress-fill h-full rounded-full"></div>
                     </div>
                   </div>
                 ))}
@@ -76,7 +70,7 @@ export function RikbaDriverSection() {
           </div>
 
           {/* Right — perks */}
-          <div className="flex flex-col items-center"> {/* Added flex and items-center to center content */}
+          <div className="flex flex-col items-center">
             <div className="text-center mb-8">
               <span
                 className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
@@ -95,13 +89,13 @@ export function RikbaDriverSection() {
             </div>
 
             <p
-              className="text-base md:text-lg leading-relaxed mb-10 text-center"
+              className="text-base md:text-lg leading-relaxed mb-10 text-center max-w-lg"
               style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.7)" }}
             >
               Rikba was built with Malta's drivers at the table — not as an afterthought. Fairer fees, real support, and tools that help you earn more on your schedule across the island.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="grid sm:grid-cols-2 gap-4 mb-8 w-full max-w-2xl">
               {perks.map((p, i) => (
                 <div
                   key={i}
@@ -145,10 +139,67 @@ export function RikbaDriverSection() {
                 </svg>
               </a>
             </div>
-
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .progress-bars {
+          position: relative;
+          margin-bottom: 0.5rem;
+        }
+        .progress-track {
+          position: relative;
+          height: 10px !important;
+          border-radius: 5px;
+          overflow: hidden;
+          background: var(--border) !important;
+        }
+        .progress-fill {
+          position: absolute;
+          top: 0;
+          left: -100%;
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(to right, #ef4444 0%, #0066ff 100%) !important;
+          border-radius: 5px;
+          transition: left 0.3s ease-out, width 1.5s ease-out 0.3s;
+          will-change: transform;
+        }
+        .progress-bars[data-width="85%"] .progress-fill {
+          background: linear-gradient(to right, #ef4444 0%, #0066ff 100%) !important;
+        }
+        .progress-bars[data-width="15%"] .progress-fill {
+          background: #0066ff !important;
+        }
+        .progress-bars.animate .progress-fill {
+          left: 0;
+          width: attr(data-width) !important;
+        }
+        @keyframes slideIn {
+          0% { left: -100%; width: 0%; }
+          30% { left: 0; width: 0%; }
+          100% { left: 0; width: attr(data-width); }
+        }
+      `}</style>
+
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('animate');
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.progress-bars-container .progress-bars').forEach(bar => {
+              observer.observe(bar);
+            });
+          });
+        `
+      }} />
     </section>
   );
 }
