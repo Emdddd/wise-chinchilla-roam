@@ -79,7 +79,7 @@ export function RikbaHero() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#waitlist"
+              href="#waitlist-bottom"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               style={{
                 fontFamily: "DM Sans, sans-serif",
