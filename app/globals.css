@@ -463,4 +463,12 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em !important;
 }
 
+/* Hero title center align only */
+h1, .hero-title, [class*="hero-h"], .main-hero h1 {
+  text-align: center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+}
+
 
