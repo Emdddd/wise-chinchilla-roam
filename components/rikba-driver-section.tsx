@@ -282,7 +282,41 @@ export function RikbaDriverSection() {
           >
             Apply Now
           </h3>
+           import { useState } from 'react';
 
+export default function ContactForm() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "d0315504-431b-43b7-af8e-64e99d28378e");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      setResult("Error");
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" name="name" required/>
+      <input type="email" name="email" required/>
+      <textarea name="message" required></textarea>
+      <button type="submit">Submit Form</button>
+      <span>{result}</span>
+    </form>
+  );
+}
           <form
             ref={formRef}
             action="https://api.web3forms.com/submit"
