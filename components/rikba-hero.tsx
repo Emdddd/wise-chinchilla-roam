@@ -34,7 +34,7 @@ export function RikbaHero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Left — headline + CTAs */}
           <div className="space-y-8">
             <div className="w-full flex justify-center">
@@ -109,47 +109,12 @@ export function RikbaHero() {
               ))}
             </div>
           </div>
-
-          {/* Right — waitlist form */}
-          <div id="waitlist" className="scroll-mt-24">
-            <div
-              className="rounded-2xl p-6 md:p-8 shadow-2xl"
-              style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)" }}
-            >
-              <div className="mb-6">
-                <h2
-                  className="text-2xl font-bold mb-1"
-                  style={{ fontFamily: "Syne, sans-serif", color: "var(--brand-navy)" }}
-                >
-                  Get Early Access
-                </h2>
-                <p className="text-sm" style={{ fontFamily: "DM Sans, sans-serif", color: "var(--text-secondary)" }}>
-                  Be first in Malta when Rikba launches.
-                </p>
-              </div>
-              <KleapForm
-                formId="rider-waitlist"
-                title="Rider Waitlist"
-                description=""
-                fields={[
-                  { name: "name", label: "Full Name", type: "text", required: true },
-                  { name: "email", label: "Email Address", type: "email", required: true },
-                  { name: "city", label: "Your Town / Area", type: "text", required: true, placeholder: "e.g. Valletta, Sliema, St Julian's" },
-                  { name: "phone", label: "Phone (optional)", type: "tel", required: false },
-                ]}
-                submitText="Join the Waitlist →"
-                successMessage="You're on the list! We'll notify you when Rikba launches in Malta."
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, var(--surface))" }}
-      />
-    </section>
-  );
-}
+          
+          {/* Bottom fade */}
+          <div
+          className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+         style={{ background: "linear-gradient(to bottom, transparent, var(--surface))" }}
+       />
+     </section>
+   );
+ }
