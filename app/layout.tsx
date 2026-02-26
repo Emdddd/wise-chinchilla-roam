@@ -19,7 +19,7 @@ const headingFont = Inter({
   variable: "--font-heading",
 });
 
-export const meta Metadata = {
+export const metadata: Metadata = {
   title: {
     default: 'Rikba - Malta Rides',
     template: '%s | Rikba',
