@@ -5,6 +5,8 @@ export const runtime = "edge";
 export const alt = siteConfig.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = 'force-static';
+export const revalidate = 0;
 
 export default async function OGImage() {
   const hasImage = siteConfig.ogImage && siteConfig.ogImage.length > 0;
