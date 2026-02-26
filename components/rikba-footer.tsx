@@ -5,23 +5,21 @@ export function RikbaFooter() {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: "var(--brand)" }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2Z" fill="white" opacity="0.3"/>
-                  <circle cx="12" cy="12" r="4" fill="white"/>
-                </svg>
-              </div>
-              <span
-                className="text-xl font-bold text-white"
-                style={{ fontFamily: "Syne, sans-serif" }}
-              >
-                Rikba
-              </span>
-            </div>
+           <div className="flex items-center gap-2 mb-4">
+            <div className="w-8 h-8 relative">
+            <img
+             src="https://i.imgur.com/qLENgdJ_d.webp?maxwidth=760&fidelity=grand"
+             alt="Rikba Logo"
+            className="w-full h-full object-contain"
+            />
+          </div>
+          <span
+           className="text-xl font-bold text-white"
+          style={{ fontFamily: "Syne, sans-serif" }}
+           >
+           Rikba
+          </span>
+          </div>
             <p
               className="text-sm leading-relaxed max-w-xs"
               style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.55)" }}
