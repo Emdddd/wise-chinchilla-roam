@@ -39,8 +39,8 @@ export function RikbaDriverSection() {
               </p>
               <div className="space-y-3">
                 {[
-                  { name: "Other platforms", pct: 78, label: "They keep 15%+", bad: true },
-                  { name: "Rikba", pct: 40, label: "We keep far less", bad: false },
+                  { name: "Other platforms", pct: 40, label: "They keep 15%+", bad: true },
+                  { name: "Rikba", pct: 15, label: "We keep far less", bad: false },
                 ].map((row) => (
                   <div key={row.name}>
                     <div className="flex justify-between items-center mb-1">
