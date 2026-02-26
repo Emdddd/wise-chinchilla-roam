@@ -32,7 +32,7 @@ export function RikbaNavbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
            <img 
-            src="https://imgur.com/a/0TuvIQi.png" 
+            src="https://i.imgur.com/bLm5TkF_d.webp?maxwidth=760&fidelity=grand" 
             alt="Rikba" 
             className="w-10 h-10 rounded-lg flex-shrink-0 object-contain"
             />
