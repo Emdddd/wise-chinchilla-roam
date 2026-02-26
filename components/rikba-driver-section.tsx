@@ -76,32 +76,32 @@ export function RikbaDriverSection() {
           </div>
 
           {/* Right — perks */}
-          <div>
-           <div className="text-center mb-8">
-           <span
-            className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
-            style={{ color: "var(--brand)", background: "rgba(0,102,255,0.15)", fontFamily: "DM Sans, sans-serif" }}
-             >
-              For Drivers
-           </span>
-           <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-white"
-              style={{ fontFamily: "Syne, sans-serif" }}
-             >
-              Drive in Malta.
-              <br />
-               <span style={{ color: "var(--brand)" }}>Earn More.</span>
-               </h2>
-              </div>
+          <div className="flex flex-col items-center"> {/* Added flex and items-center to center content */}
+            <div className="text-center mb-8">
+              <span
+                className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full"
+                style={{ color: "var(--brand)", background: "rgba(0,102,255,0.15)", fontFamily: "DM Sans, sans-serif" }}
+              >
+                For Drivers
+              </span>
+              <h2
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-white"
+                style={{ fontFamily: "Syne, sans-serif" }}
+              >
+                Drive in Malta.
+                <br />
+                <span style={{ color: "var(--brand)" }}>Earn More.</span>
+              </h2>
+            </div>
 
             <p
-              className="text-base md:text-lg leading-relaxed mb-10"
+              className="text-base md:text-lg leading-relaxed mb-10 text-center"
               style={{ fontFamily: "DM Sans, sans-serif", color: "rgba(255,255,255,0.7)" }}
             >
               Rikba was built with Malta's drivers at the table — not as an afterthought. Fairer fees, real support, and tools that help you earn more on your schedule across the island.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {perks.map((p, i) => (
                 <div
                   key={i}
@@ -127,21 +127,25 @@ export function RikbaDriverSection() {
               ))}
             </div>
 
-            <a
-              href="#apply-driver"
-              className="mx-auto block w-fit mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              style={{
-                fontFamily: "DM Sans, sans-serif",
-                background: "var(--brand)",
-                color: "white",
-                boxShadow: "0 8px 32px rgba(0,102,255,0.4)",
-              }}
-            >
-              Apply to Drive
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+            {/* Centered Apply Button */}
+            <div className="flex justify-center w-full">
+              <a
+                href="#apply-driver"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                style={{
+                  fontFamily: "DM Sans, sans-serif",
+                  background: "var(--brand)",
+                  color: "white",
+                  boxShadow: "0 8px 32px rgba(0,102,255,0.4)",
+                }}
+              >
+                Apply to Drive
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
