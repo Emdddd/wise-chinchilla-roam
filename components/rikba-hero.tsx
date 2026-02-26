@@ -45,6 +45,7 @@ export function RikbaHero() {
                 Launching Summer 2026
               </span>
             </div>
+          </div>
 
             <h1
               className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none tracking-tight text-white"
