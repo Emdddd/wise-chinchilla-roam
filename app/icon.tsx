@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+export const dynamic = 'force-static';
+export const revalidate = 0;
 
 export const size = {
   width: 32,
