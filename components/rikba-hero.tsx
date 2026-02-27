@@ -7,20 +7,20 @@ export function RikbaHero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center"
-      style={{ background: "#000000" }}
+      style={{ background: "var(--brand-navy)" }}
     >
       {/* White fade only at bottom trust signals area */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.25) 100%)"
+          background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.2) 100%)"
         }}
       />
 
       {/* Decorative glow orb */}
       <div
         className="absolute top-1/3 right-8 md:right-24 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-20"
-        style={{ background: "rgba(0,102,255,0.3)" }}
+        style={{ background: "#0066ff" }}
       />
 
       {/* Content */}
@@ -60,7 +60,7 @@ export function RikbaHero() {
             Rikba is Malta's ride-hailing platform built on fairness — for everyone on the island.
           </p>
 
-          {/* Buttons - Join Waitlist blue, Drive white */}
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#waitlist-bottom"
@@ -90,7 +90,7 @@ export function RikbaHero() {
             </a>
           </div>
 
-          {/* Trust signals - this area gets white fade */}
+          {/* Trust signals */}
           <div className="flex flex-wrap items-center justify-center gap-6 pt-2 pb-8">
             {[
               { icon: "⭐", text: "Rider-first pricing" },
